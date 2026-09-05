@@ -129,6 +129,47 @@ h2{font-size:clamp(32px,5vw,53px);letter-spacing:-2px;line-height:1.05;margin-to
 }
 .bullet strong{display:block;font-size:14px}.bullet span{display:block;color:#929292;font-size:12px;margin-top:2px}
 
+/* REVIEWS & ELFSIGHT CUSTOM BLENDING STYLES */
+.reviews-wrapper {
+  max-width: 960px;
+  margin: auto;
+}
+
+/* Force dark theme overrides on the Elfsight widget container */
+.reviews-wrapper [class*="eapps-facebook-reviews"],
+.reviews-wrapper [class*="elfsight-app"] {
+  background: transparent !important;
+  font-family: Inter, Arial, sans-serif !important;
+}
+
+/* Card backgrounds and borders */
+.reviews-wrapper [class*="eapps-facebook-reviews-item"],
+.reviews-wrapper [class*="es-review-card"] {
+  background: linear-gradient(145deg, #161616, #0d0d0d) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 15px !important;
+  color: var(--white) !important;
+  box-shadow: none !important;
+}
+
+/* Stars matching site gold theme */
+.reviews-wrapper [class*="eapps-facebook-reviews-item-rating-star"],
+.reviews-wrapper [class*="es-star"] {
+  color: var(--gold2) !important;
+  fill: var(--gold2) !important;
+}
+
+/* User text and name colors */
+.reviews-wrapper [class*="eapps-facebook-reviews-item-text"],
+.reviews-wrapper [class*="es-review-text"] {
+  color: var(--muted) !important;
+}
+.reviews-wrapper [class*="eapps-facebook-reviews-item-author-name"],
+.reviews-wrapper [class*="es-author-name"] {
+  color: var(--white) !important;
+  font-weight: 700 !important;
+}
+
 .dark-band{background:#0b0b0b;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
 .step{padding:25px 25px 25px 0;border-right:1px solid var(--line);margin-right:25px}
@@ -232,6 +273,7 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:#777;font-size:11px
     <nav class="links" id="links">
       <a href="#services" onclick="closeMenu()">Services</a>
       <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#reviews" onclick="closeMenu()">Reviews</a>
       <a href="#process" onclick="closeMenu()">Process</a>
       <a href="#contact" onclick="closeMenu()">Contact</a>
       <a href="javascript:void(0)" onclick="closeMenu(); toggleContactModal(true)" class="contact-btn">
@@ -288,7 +330,7 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:#777;font-size:11px
     </div>
     <div class="reveal">
       <div class="overline">Inside The Workshop</div>
-      <h2>Built around <span class="gold">precision.</span></h2>
+      Pre Built around <span class="gold">precision.</span>
       <p style="color:#999;margin-top:18px;font-size:14px">
         A proper repair starts with the right workspace. The service center's
         bench is equipped for close inspection, electronics testing and hands-on
@@ -304,7 +346,30 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:#777;font-size:11px
   </div>
 </section>
 
-<section id="process">
+<!-- DYNAMIC ELFSIGHT REVIEWS SECTION WITH CUSTOM STYLING -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-top reveal" style="text-align:center; display:block; margin-bottom:30px;">
+      <div class="overline">Customer Feedback</div>
+      <h2>Recommended by <span class="gold">our clients.</span></h2>
+      <p class="section-intro" style="margin:12px auto 0;">Real reviews from customers who trusted Pampanga Gadget Repair with their devices.</p>
+    </div>
+
+    <div class="reviews-wrapper reveal">
+      <!-- Elfsight Facebook Reviews Widget -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-85419f31-0584-431f-a49f-a2cd483c036d" data-elfsight-app-lazy></div>
+    </div>
+
+    <div style="text-align:center; margin-top:25px;">
+      <a class="btn ghost" href="https://www.facebook.com/xiaomiappleservicecenter/reviews/?id=100069630073509&sk=reviews" target="_blank" rel="noopener">
+        👍 See All Facebook Reviews →
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="dark-band">
   <div class="container">
     <div class="section-top reveal">
       <div><div class="overline">The Process</div><h2>Simple. Clear.<br><span class="gold">Straightforward.</span></h2></div>
