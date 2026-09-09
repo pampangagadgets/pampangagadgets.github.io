@@ -259,6 +259,173 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:#777;font-size:11px
   .cta{padding:35px 25px;display:block}.cta .actions{margin-top:25px}
   .float{right:12px;bottom:12px}
 }
+/* =========================
+   ₱200 DISCOUNT POPUP
+========================= */
+
+.discount-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
+}
+
+.discount-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.discount-popup{
+  width:100%;
+  max-width:430px;
+  position:relative;
+  background:
+    radial-gradient(circle at top right,rgba(216,173,77,.16),transparent 40%),
+    linear-gradient(145deg,#181818,#0b0b0b);
+  border:1px solid rgba(216,173,77,.45);
+  border-radius:20px;
+  padding:38px 28px 30px;
+  text-align:center;
+  box-shadow:0 25px 80px rgba(0,0,0,.8);
+  transform:translateY(25px) scale(.96);
+  transition:transform .3s ease;
+}
+
+.discount-overlay.active .discount-popup{
+  transform:translateY(0) scale(1);
+}
+
+.discount-close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.07);
+  color:#aaa;
+  font-size:20px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.discount-close:hover{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+
+.discount-gift{
+  width:70px;
+  height:70px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(216,173,77,.12);
+  border:1px solid rgba(216,173,77,.4);
+  font-size:34px;
+}
+
+.discount-popup .overline{
+  margin-bottom:8px;
+}
+
+.discount-popup h2{
+  font-size:36px;
+  letter-spacing:-1.5px;
+  margin:0 0 8px;
+}
+
+.discount-popup h2 span{
+  color:var(--gold2);
+}
+
+.discount-popup-text{
+  color:#aaa;
+  font-size:13px;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+.discount-amount{
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:11px;
+  background:rgba(216,173,77,.08);
+  border:1px dashed rgba(216,173,77,.5);
+}
+
+.discount-amount strong{
+  display:block;
+  color:var(--gold2);
+  font-size:25px;
+  margin-bottom:2px;
+}
+
+.discount-amount span{
+  color:#888;
+  font-size:11px;
+}
+
+.discount-social{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.discount-social .btn{
+  width:100%;
+}
+
+.facebook-discount{
+  background:#1877f2;
+  border-color:#1877f2;
+  color:#fff;
+}
+
+.facebook-discount:hover{
+  background:#0d65d5;
+  border-color:#0d65d5;
+}
+
+.tiktok-discount{
+  background:#111;
+  border-color:#444;
+  color:#fff;
+}
+
+.tiktok-discount:hover{
+  background:#000;
+  border-color:#777;
+}
+
+.discount-small{
+  display:block;
+  margin-top:15px;
+  color:#666;
+  font-size:10px;
+  line-height:1.5;
+}
+
+@media(max-width:550px){
+  .discount-popup{
+    padding:35px 20px 25px;
+  }
+
+  .discount-popup h2{
+    font-size:31px;
+  }
+}
+
 </style>
 </head>
 
@@ -425,6 +592,68 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:#777;font-size:11px
 
 <a class="float" href="javascript:void(0)" onclick="toggleContactModal(true)">💬 Message Us</a>
 
+
+<!-- ₱200 DISCOUNT POPUP -->
+<div id="discountPopup" class="discount-overlay" onclick="closeDiscountPopup(event)">
+
+  <div class="discount-popup">
+
+    <button
+      class="discount-close"
+      onclick="toggleDiscountPopup(false)"
+      aria-label="Close discount popup"
+    >
+      ✕
+    </button>
+
+    <div class="discount-gift">🎁</div>
+
+    <div class="overline">SPECIAL OFFER</div>
+
+    <h2>GET <span>₱200 OFF!</span></h2>
+
+    <p class="discount-popup-text">
+      Follow Pampanga Gadget Repair on Facebook and TikTok
+      and get a <strong>₱200 discount</strong> on your next
+      gadget repair.
+    </p>
+
+    <div class="discount-amount">
+      <strong>₱200 DISCOUNT</strong>
+      <span>Follow our pages to claim the offer</span>
+    </div>
+
+    <div class="discount-social">
+
+      <a
+        class="btn facebook-discount"
+        href="https://www.facebook.com/share/1TBRfGUMjy/?mibextid=wwXIfr"
+        target="_blank"
+        rel="noopener"
+      >
+        📘 Follow us on Facebook
+      </a>
+
+      <a
+        class="btn tiktok-discount"
+        href="https://www.tiktok.com/@pampanga.gadgets?_r=1&_t=ZS-99aL4SH5yfx"
+        target="_blank"
+        rel="noopener"
+      >
+        🎵 Follow us on TikTok
+      </a>
+
+    </div>
+
+    <small class="discount-small">
+      Show that you followed our pages when claiming your discount.
+      Terms may apply.
+    </small>
+
+  </div>
+
+</div>
+
 <!-- Contact Modal Overlay -->
 <div id="contactModal" class="modal-overlay" onclick="closeContactModal(event)">
   <div class="modal-card">
@@ -472,6 +701,42 @@ const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+/* =========================
+   ₱200 DISCOUNT POPUP
+========================= */
+
+function toggleDiscountPopup(show) {
+  const popup = document.getElementById('discountPopup');
+
+  if (show) {
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  } else {
+    popup.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+function closeDiscountPopup(event) {
+  if (event.target.id === 'discountPopup') {
+    toggleDiscountPopup(false);
+  }
+}
+
+/* Automatically show the popup after 5 seconds */
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    toggleDiscountPopup(true);
+  }, 5000);
+});
+
+/* Close popup with ESC key */
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    toggleDiscountPopup(false);
+  }
+});
+
 </script>
 </body>
 </html>
